@@ -1,0 +1,15 @@
+- name: Get source code
+  get_url:
+    url: https://github.com/fteychene/prometheus-app-sample/releases/download/0.1.0/prometheus_metric_generator.jar
+    dest: /home/debian/prometheus_metric_generator.jar
+
+- name: Create service file
+  copy:
+    src: prometheus_metric_generator.service
+    dest: /etc/systemd/system/prometheus_metric_generator.service
+
+- name: Unable prometheus metric generator service
+  systemd:
+    name: prometheus_metric_generator
+    daemon_reload: yes
+    enabled: yes

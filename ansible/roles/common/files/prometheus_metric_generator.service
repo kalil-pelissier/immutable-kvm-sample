@@ -1,0 +1,11 @@
+[Unit]
+Description=simple application
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/usr/bin/java -jar /home/debian/prometheus_metric_generator.jar
+
+[Install]
+WantedBy=multi-user.target
